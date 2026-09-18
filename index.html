@@ -12,6 +12,94 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  /* ---------- CONTACT ---------- */
+.contact-grid{
+  display:grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 28px;
+}
+
+.contact-info{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+}
+
+.contact-item{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:16px 18px;
+}
+
+.contact-item span{
+  display:block;
+  color:var(--muted-2);
+  font-family:var(--font-mono);
+  font-size:0.72rem;
+  margin-bottom:4px;
+}
+
+.contact-item a{
+  color:var(--text);
+  text-decoration:none;
+}
+
+.contact-item a:hover{
+  color:var(--accent);
+}
+
+.contact-form{
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.contact-form input,
+.contact-form textarea{
+  width:100%;
+  padding:12px 14px;
+  background:var(--surface);
+  color:var(--text);
+  border:1px solid var(--border);
+  border-radius:7px;
+  font-family:var(--font-body);
+  font-size:0.9rem;
+  outline:none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus{
+  border-color:var(--accent);
+}
+
+.contact-form textarea{
+  min-height:140px;
+  resize:vertical;
+}
+
+.contact-form button{
+  align-self:flex-start;
+  padding:10px 18px;
+  background:var(--accent);
+  color:#0b0b0d;
+  border:1px solid var(--accent);
+  border-radius:7px;
+  font-weight:600;
+  cursor:pointer;
+  transition:opacity 0.15s ease, transform 0.15s ease;
+}
+
+.contact-form button:hover{
+  opacity:0.9;
+  transform:translateY(-1px);
+}
+
+@media (max-width:620px){
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+}
   :root{
     --bg: #0b0b0d;
     --surface: #15151a;
@@ -317,6 +405,7 @@
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
     </nav>
   </div>
 </header>
@@ -360,8 +449,6 @@
             <a href="YOUR_RESUME_LINK" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1.5H8V13zm0 3h8v1.5H8V16zm0-6h4v1.5H8V10z"/></svg>
               Resume
-            </a>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vikasha122005@gmail.com" target="_blank"> Email
             </a>
           </div>
         </div>
@@ -451,6 +538,101 @@
       </div>
     </div>
   </section>
+  <!-- ============ CONTACT ============ -->
+<section id="contact">
+  <div class="wrap">
+
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">// contact</p>
+        <h2 class="section-title">Get in Touch</h2>
+      </div>
+    </div>
+
+    <div class="contact-grid">
+
+      <!-- Contact Information -->
+      <div class="contact-info">
+
+        <div class="contact-item">
+          <span>EMAIL</span>
+          <a href="mailto:vikasha122005@gmail.com">
+            vikasha122005@gmail.com
+          </a>
+        </div>
+
+        <div class="contact-item">
+          <span>PHONE</span>
+          <a href="tel:+917904490138">
+            +91 7904490138
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Contact Form -->
+      <form
+        class="contact-form"
+        action="https://formsubmit.co/vikasha122005@gmail.com"
+        method="POST"
+      >
+
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter your name"
+          required
+        />
+
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          required
+        />
+
+        <input
+          type="text"
+          name="subject"
+          placeholder="Subject"
+          required
+        />
+
+        <textarea
+          name="message"
+          placeholder="Enter your message"
+          required
+        ></textarea>
+
+        <!-- FormSubmit settings -->
+        <input
+          type="hidden"
+          name="_subject"
+          value="New message from Vikash's Portfolio"
+        />
+
+        <input
+          type="hidden"
+          name="_template"
+          value="table"
+        />
+
+        <input
+          type="hidden"
+          name="_captcha"
+          value="true"
+        />
+
+        <button type="submit">
+          Send Message →
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+</section>
 
   <footer>
     <div class="wrap" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; width:100%;">
