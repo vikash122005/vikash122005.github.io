@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vikash</title>
+<meta name="description" content="Vikash — Cloud & Infrastructure Engineer transitioning into Data Engineering. Projects, articles, and profile." />
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon_32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/favicon_180.png">
+<link rel="icon" type="image/png" sizes="512x512" href="images/favicon_512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0b0b0d;
+    --surface: #15151a;
+    --surface-2: #1c1c22;
+    --border: #28282f;
+    --text: #ececee;
+    --muted: #96969f;
+    --muted-2: #6d6d76;
+    --accent: #7c9eff;
+    --accent-dim: #7c9eff33;
+    --amber: #f2b84b;
+    --radius: 10px;
+    --maxw: 880px;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a{ color: inherit; }
+  img{ max-width:100%; display:block; }
+
+  .wrap{
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- NAV ---------- */
+  header.site-nav{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(11,11,13,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner{
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 16px 24px;
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+  }
+  .nav-mark{
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+  }
+  .nav-mark span{ color: var(--accent); }
+  nav.nav-links{ display:flex; gap: 28px; }
+  nav.nav-links a{
+    text-decoration:none;
+    font-size: 0.9rem;
+    color: var(--muted);
+    font-weight: 500;
+    transition: color 0.15s ease;
+  }
+  nav.nav-links a:hover{ color: var(--text); }
+  nav.nav-links a:focus-visible, a:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+  .nav-toggle{ display:none; }
+
+  @media (max-width: 620px){
+    nav.nav-links{ gap: 16px; }
+    nav.nav-links a{ font-size: 0.82rem; }
+  }
+
+  /* ---------- PIPELINE DIVIDER (signature element) ---------- */
+  .pipeline-divider{
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .pipeline-divider svg{ width:100%; height: 32px; display:block; overflow: visible; }
+  .pipeline-divider .rail{ stroke: var(--border); stroke-width: 1; }
+  .pipeline-divider .node{ fill: var(--surface-2); stroke: var(--muted-2); stroke-width: 1.2; }
+  .pipeline-divider .pulse{ fill: var(--amber); filter: drop-shadow(0 0 4px var(--amber)); }
+
+  /* ---------- HERO / ABOUT ---------- */
+  section{ padding: 72px 0; }
+  #top{ padding-top: 56px; }
+
+  .eyebrow{
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin: 0 0 14px;
+  }
+
+  .hero-grid{
+    display:grid;
+    grid-template-columns: auto 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+  .avatar{
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+  }
+  h1.name{
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 6px;
+  }
+  .role-line{
+    color: var(--muted);
+    font-size: 1.02rem;
+    margin: 0 0 18px;
+  }
+  .role-line .sep{ color: var(--muted-2); margin: 0 8px; }
+  p.bio{
+    color: var(--text);
+    max-width: 62ch;
+    margin: 0 0 22px;
+  }
+  p.bio strong{ color: var(--text); font-weight: 600; }
+
+  .chips{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 26px;
+    padding: 0;
+    list-style: none;
+  }
+  .chips li{
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: var(--muted);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 5px 10px;
+    border-radius: 6px;
+  }
+
+  .link-row{ display:flex; flex-wrap: wrap; gap: 10px; }
+  .link-row a{
+    display:inline-flex;
+    align-items:center;
+    gap: 7px;
+    text-decoration:none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    padding: 9px 15px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    transition: border-color 0.15s ease, transform 0.15s ease;
+  }
+  .link-row a:hover{ border-color: var(--accent); transform: translateY(-1px); }
+  .link-row a.primary{ background: var(--accent); color: #0b0b0d; border-color: var(--accent); font-weight: 600; }
+  .link-row a.primary:hover{ opacity: 0.9; }
+  .link-row svg{ width:15px; height:15px; flex-shrink:0; }
+
+  @media (max-width: 560px){
+    .hero-grid{ grid-template-columns: 1fr; }
+    .avatar{ width: 64px; height: 64px; }
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section-head{
+    display:flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    gap: 16px;
+  }
+  h2.section-title{
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .section-link{
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-decoration: none;
+    white-space: nowrap;
+    border-bottom: 1px solid transparent;
+  }
+  .section-link:hover{ color: var(--accent); border-color: var(--accent); }
+
+  /* ---------- CARDS ---------- */
+  .card-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .card{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    text-decoration: none;
+    color: var(--text);
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: border-color 0.18s ease, transform 0.18s ease;
+  }
+  .card:hover{ border-color: var(--accent-dim); transform: translateY(-2px); border-color: var(--accent); }
+  .card-title{
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    margin: 0;
+  }
+  .card-desc{
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin: 0;
+    flex-grow: 1;
+  }
+  .card-tags{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 4px;
+  }
+  .card-tags span{
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--muted-2);
+    background: var(--surface-2);
+    padding: 3px 8px;
+    border-radius: 5px;
+  }
+  .card-cta{
+    font-size: 0.82rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-top: 4px;
+  }
+  .card-cta::after{ content: " →"; }
+
+  /* Article cards: horizontal on wider screens */
+  .article-card{
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 20px;
+  }
+  .article-card .article-body{ display:flex; flex-direction:column; gap: 6px; flex-grow:1; }
+  .article-card .card-cta{ margin-top:0; flex-shrink:0; }
+  @media (max-width: 560px){
+    .article-card{ flex-direction: column; }
+  }
+
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top: 1px solid var(--border);
+    padding: 32px 0 48px;
+    color: var(--muted-2);
+    font-size: 0.82rem;
+    display:flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  footer a{ color: var(--muted); text-decoration:none; }
+  footer a:hover{ color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="nav-inner">
+    <a class="nav-mark" href="#top">vikash<span>.</span>dev</a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about">
+    <div class="wrap">
+      <p class="eyebrow">// about</p>
+      <div class="hero-grid">
+        <img class="avatar" src="images/profile.png" alt="Vikash" />
+        <div>
+          <h1 class="name">Vikash</h1>
+          <p class="role-line">Aspiring Data Engineering</p>
+          <p class="bio">
+            I'm an aspiring <strong>Data Engineer </strong> with a strong foundation in <strong>SQL, Python, and Data Structures & Algorithms </strong>
+             — working toward a longer-term goal of ML/AI engineering. Previously, I worked as a Cloud & Infrastructure Engineer on a 
+             Joiner–Mover–Leaver team, handling Active Directory, Azure admin, and L1/L2 service desk operations.
+          </p>
+          <ul class="chips">
+            <li>Python</li>
+            <li>SQL</li>
+            <li>Azure</li>
+            <li>Active Directory</li>
+          </ul>
+          <div class="link-row">
+            <!-- Replace the # links below with your real profile URLs -->
+            <a class="primary" href="https://www.linkedin.com/in/vikasha122005/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.11 20.45H3.56V9h3.55v11.45z"/></svg>
+              LinkedIn
+            </a>
+            <a href="https://leetcode.com/u/Vikash122005/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.48 2.36 6.1 9.74a3.4 3.4 0 0 0 0 4.8l4.66 4.67a3.4 3.4 0 0 0 4.8 0l2.3-2.3a1.2 1.2 0 0 0-1.7-1.7l-2.3 2.3a1 1 0 0 1-1.4 0l-4.66-4.67a1 1 0 0 1 0-1.4l7.38-7.38a1.2 1.2 0 1 0-1.7-1.7zM11.9 14.4h7.9a1.2 1.2 0 0 0 0-2.4h-7.9a1.2 1.2 0 0 0 0 2.4z"/></svg>
+              LeetCode
+            </a>
+            <a href="https://github.com/vikash122005/" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.15-1.11-1.46-1.11-1.46-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.1-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.9-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.3.68.92.68 1.85v2.74c0 .26.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
+              GitHub
+            </a>
+            <a href="YOUR_RESUME_LINK" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 2c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6H6zm7 1.5L18.5 9H13V3.5zM8 13h8v1.5H8V13zm0 3h8v1.5H8V16zm0-6h4v1.5H8V10z"/></svg>
+              Resume
+            </a>
+            <a href="mailto:vikasha122005@gmail.com">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13zm2.2.3 7.8 6.2 7.8-6.2H4.2zM20 7.1l-7.4 5.9a1 1 0 0 1-1.2 0L4 7.1v11.4c0 .28.22.5.5.5h15a.5.5 0 0 0 .5-.5V7.1z"/></svg>
+              Email
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="pipeline-divider" aria-hidden="true">
+    <svg viewBox="0 0 880 32" preserveAspectRatio="none">
+      <line class="rail" x1="0" y1="16" x2="880" y2="16"/>
+      <circle class="node" cx="60" cy="16" r="4"/>
+      <circle class="node" cx="440" cy="16" r="4"/>
+      <circle class="node" cx="820" cy="16" r="4"/>
+      <circle class="pulse" cx="0" cy="16" r="3">
+        <animateMotion dur="7s" repeatCount="indefinite" path="M0,16 L880,16"/>
+      </circle>
+    </svg>
+  </div>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">// projects</p>
+          <h2 class="section-title">Things I've built</h2>
+        </div>
+        <a class="section-link" href="https://github.com/vikash122005?tab=repositories" target="_blank" rel="noopener">All repos →</a>
+      </div>
+      <div class="card-grid">
+
+        <!-- Duplicate this <a class="card"> block for each project, point href at the GitHub repo -->
+        <a class="card" href="https://github.com/vikash122005/smart-inventory-management" target="_blank" rel="noopener">
+          <h3 class="card-title">Smart Inventory Management System</h3>
+          <p class="card-desc">A data engineering project that processes sales and inventory data to monitor stock levels, identify low-stock products, and support data-driven inventory decisions.</p>
+          <div class="card-tags"><span>Python</span><span>SQL</span><span>Pandas</span><span>PostgreSQL</span><span>Streamlit</span></div>
+          <span class="card-cta">View on GitHub</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="pipeline-divider" aria-hidden="true">
+    <svg viewBox="0 0 880 32" preserveAspectRatio="none">
+      <line class="rail" x1="0" y1="16" x2="880" y2="16"/>
+      <circle class="node" cx="60" cy="16" r="4"/>
+      <circle class="node" cx="440" cy="16" r="4"/>
+      <circle class="node" cx="820" cy="16" r="4"/>
+      <circle class="pulse" cx="0" cy="16" r="3">
+        <animateMotion dur="7s" repeatCount="indefinite" path="M0,16 L880,16"/>
+      </circle>
+    </svg>
+  </div>
+
+    <!-- ============ EXPERIENCE ============ -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">// experience</p>
+          <h2 class="section-title">Professional Background</h2>
+        </div>
+      </div>
+      <div class="card-grid" style="grid-template-columns:1fr;">
+
+        <!-- Duplicate this block for each role -->
+        <div class="card article-card" style="cursor: default;">
+           <img src="images/flyrank-logo.jpeg" alt="FlyRank AI" style="width:44px; height:44px; border-radius:8px; object-fit:cover; flex-shrink:0;" />
+           <div class="article-body">
+             <h3 class="card-title">ML Engineering Internship</h3>
+             <p class="card-desc" style="margin-bottom:2px;">FlyRank AI · Sep 2026 - Current</p>
+             <p class="card-desc">Remote ML Engineering internship at FlyRank — a structured, assessment-based applied ML program.</p>
+            </div>
+        </div>
+        <!-- Duplicate this block for each role -->
+        <div class="card article-card" style="cursor: default;">
+           <img src="images/ltm-logo.png" alt="LTI Mindtree logo" style="width:44px; height:44px; border-radius:8px; object-fit:cover; flex-shrink:0;" />
+           <div class="article-body">
+             <h3 class="card-title">Cloud & Infrastructure Engineer</h3>
+             <p class="card-desc" style="margin-bottom:2px;">LTI Mindtree · 1.2 year · Jun 2025 - Aug 2026</p>
+             <p class="card-desc">Worked with enterprise infrastructure, incident/ticket management, troubleshooting, access/security-related provisions and issues, and cloud/infra operations.</p>
+            </div>
+        </div>
+        
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; width:100%;">
+      <span>© 2026 Vikash</span>
+      <span>Built with GitHub Pages</span>
+    </div>
+  </footer>
+
+</main>
+
+</body>
+</html>
